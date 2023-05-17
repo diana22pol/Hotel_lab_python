@@ -1,3 +1,8 @@
+"""
+Lab 1 model for class Hotel
+"""
+
+
 class Hotel:
     """
     Represents a hotel with its name, number of total rooms, number of available rooms and rating.
