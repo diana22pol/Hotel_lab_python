@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 """
-Module for class Hotel
+Parent abstract class Hotel
 """
 
 
@@ -56,6 +56,12 @@ class Hotel(ABC):
 
     @abstractmethod
     def get_Location(self):
+        """
+        Abstract method to get the location of the hotel.
+
+        This method should be implemented by subclasses to
+        provide the specific location information of the hotel.
+        """
         pass
 
     @staticmethod
