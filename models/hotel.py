@@ -1,9 +1,11 @@
+from abc import ABC, abstractmethod
+
 """
 Module for class Hotel
 """
 
 
-class Hotel:
+class Hotel(ABC):
     """
     Represents a hotel with its name, number of total rooms,
     number of available rooms and rating.
@@ -52,6 +54,10 @@ class Hotel:
         """
         return self.total_rooms - self.available_rooms
 
+    @abstractmethod
+    def get_Location(self):
+        pass
+
     @staticmethod
     def get_instance():
         """
@@ -60,17 +66,3 @@ class Hotel:
         if not Hotel.__instance:
             Hotel.__instance = Hotel()
         return Hotel.__instance
-
-
-if __name__ == '__main__':
-    hotels = [
-        Hotel(),
-        Hotel("Grand Hotel", 50, 10, 4),
-        Hotel.get_instance(),
-        Hotel.get_instance()
-    ]
-
-    for hotel in hotels:
-        print(
-            f"Hotel: {hotel.name}, Total Rooms: {hotel.total_rooms}, "
-            f"Available Rooms: {hotel.available_rooms}, Rating: {hotel.rating}")
