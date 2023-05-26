@@ -1,12 +1,19 @@
+"""
+importing Hotel abstract class
+"""
+# pylint: disable = import-error
 from models.hotel import Hotel
-
-"""
-Hotel subclass - ResortHotel
-"""
 
 
 class ResortHotel(Hotel):
-    def __init__(self, name, total_rooms, available_rooms, rating, child_pools, adult_pools, restaurants_number):
+    """
+    Class ResortHotel that represents Resort Hotel
+    """
+
+    # pylint: disable = too-many-arguments
+    def __init__(self, name, total_rooms,
+                 available_rooms, rating,
+                 child_pools, adult_pools, restaurants_number):
         """
         Initializes a ResortHotel object.
 
@@ -24,7 +31,7 @@ class ResortHotel(Hotel):
         self.adult_pools = adult_pools
         self.restaurants_number = restaurants_number
 
-    def get_Location(self):
+    def get_location(self):
         """
         Returns the name of the hotel.
         """
@@ -35,11 +42,11 @@ class ResortHotel(Hotel):
         Returns a string representation of the Hotel object.
 
         Returns:
-        str: A formatted string containing information about the hotel, including its name, total rooms,
-             available rooms, rating, child pools, adult pools, and restaurants number.
+        str: A formatted string containing information
+            about the hotel, including its name, total rooms,
+            available rooms, rating, child pools, adult pools, and restaurants number.
         """
         return f"Hotel: {self.name}, Total Rooms: {self.total_rooms}, " \
                f"Available Rooms: {self.available_rooms}, Rating: {self.rating}, " \
                f"Child Pools: {self.child_pools}, Adult Pools: {self.adult_pools}, " \
                f"Restaurants Number: {self.restaurants_number}"
-

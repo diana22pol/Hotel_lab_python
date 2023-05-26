@@ -1,3 +1,7 @@
+"""
+Importing of classes for manager
+"""
+# pylint: disable = import-error
 from models.beach_hotel import BeachHotel
 from models.motel import Motel
 from models.mountain_hotel import MountainHotel
@@ -5,6 +9,9 @@ from models.resort_hotel import ResortHotel
 
 
 class HotelManager:
+    """
+    A Class HotelManager that represents a manager of hotels
+    """
     hotels = []
 
     def add_hotel(self, hotel):
@@ -16,33 +23,30 @@ class HotelManager:
         """
         self.hotels.append(hotel)
 
-    @staticmethod
-    def find_hotels_with_total_rooms_greater_than(total_rooms, hotel_list):
+    def find_hotels_with_total_rooms_greater_than(self, total_rooms):
         """
         Find hotels with a total number of rooms greater than the specified value.
 
         Args:
             total_rooms: An integer representing the minimum total number of rooms.
-            hotel_list: A list of Hotel objects.
 
         Returns:
-            A list of hotel names that have a total number of rooms greater than the specified value.
+            A list of hotel names that have a total
+            number of rooms greater than the specified value.
         """
-        return [hotel.name for hotel in filter(lambda hotel: hotel.total_rooms > total_rooms, hotel_list)]
+        return [hotel.name for hotel in self.hotels if hotel.total_rooms > total_rooms]
 
-    @staticmethod
-    def find_hotels_with_rating_greater_than(rating, hotel_list):
+    def find_hotels_with_rating_greater_than(self, rating):
         """
         Find hotels with a rating greater than the specified value.
 
         Args:
             rating: A float representing the minimum rating.
-            hotel_list: A list of Hotel objects.
 
         Returns:
             A list of hotel names that have a rating greater than the specified value.
         """
-        return [hotel.name for hotel in filter(lambda hotel: hotel.rating > rating, hotel_list)]
+        return [hotel.name for hotel in self.hotels if hotel.rating > rating]
 
     @staticmethod
     def main():
@@ -65,9 +69,9 @@ class HotelManager:
             print(str(hotel))
 
         print("\nHotels with total rooms greater than 200:")
-        print(manager.find_hotels_with_total_rooms_greater_than(200, manager.hotels))
+        print(manager.find_hotels_with_total_rooms_greater_than(200))
         print("\nHotels with rating greater than 4:")
-        print(manager.find_hotels_with_rating_greater_than(4, manager.hotels))
+        print(manager.find_hotels_with_rating_greater_than(4))
 
 
 HotelManager.main()

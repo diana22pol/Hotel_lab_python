@@ -1,11 +1,15 @@
-from models.hotel import Hotel
-
 """
 Hotel subclass - BeachHotel
 """
+# pylint: disable = import-error
+from models.hotel import Hotel
 
 
 class BeachHotel(Hotel):
+    """
+    Class BeachHotel that represents Beach Hotel
+    """
+    # pylint: disable = too-many-arguments
     def __init__(self, name, total_rooms, available_rooms, rating, beach_front):
         """
         Initializes a Hotel object.
@@ -20,7 +24,7 @@ class BeachHotel(Hotel):
         super().__init__(name, total_rooms, available_rooms, rating)
         self.beach_front = beach_front
 
-    def get_Location(self):
+    def get_location(self):
         """
         Returns None as the location of the hotel is not defined.
         """
@@ -31,10 +35,10 @@ class BeachHotel(Hotel):
         Returns a string representation of the Hotel object.
 
         Returns:
-        str: A formatted string containing information about the hotel, including its name, total rooms,
-             available rooms, rating, and beach front availability.
+        str: A formatted string containing information
+             about the hotel, including its name, total rooms,
+             available rooms, rating, and beachfront availability.
         """
         return f"Hotel: {self.name}, Total Rooms: {self.total_rooms}, " \
                f"Available Rooms: {self.available_rooms}, Rating: {self.rating}, " \
                f"Beach Front: {self.beach_front}"
-

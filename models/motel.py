@@ -1,12 +1,19 @@
-from models.hotel import Hotel
-
 """
 Hotel subclass - Motel
 """
+# pylint: disable = import-error
+from models.hotel import Hotel
 
 
 class Motel(Hotel):
-    def __init__(self, name, total_rooms, available_rooms, rating, track_number_nearby, track_kilometers, cities_nodes):
+    """
+    A class Motel that represents Motel
+    """
+    # pylint: disable = too-many-arguments
+    def __init__(self, name, total_rooms,
+                 available_rooms, rating,
+                 track_number_nearby, track_kilometers,
+                 cities_nodes):
         """
         Initializes a Hotel object.
 
@@ -24,7 +31,7 @@ class Motel(Hotel):
         self.track_kilometers = track_kilometers
         self.cities_nodes = cities_nodes
 
-    def get_Location(self):
+    def get_location(self):
         """
         Gets the location of the hotel.
 
@@ -38,11 +45,12 @@ class Motel(Hotel):
         Returns a string representation of the Hotel object.
 
         Returns:
-        str: A formatted string containing information about the hotel, including its name, total rooms,
-             available rooms, rating, track number nearby, track kilometers, and cities nodes.
+        str: A formatted string containing
+            information about the hotel, including its name, total rooms,
+            available rooms, rating, track number nearby, track kilometers, and cities nodes.
         """
         return f"Hotel: {self.name}, Total Rooms: {self.total_rooms}, " \
                f"Available Rooms: {self.available_rooms}, Rating: {self.rating}, " \
-               f"Track Number Nearby: {self.track_number_nearby}, Track Kilometers: {self.track_kilometers}, " \
+               f"Track Number Nearby: {self.track_number_nearby}, " \
+               f"Track Kilometers: {self.track_kilometers}, " \
                f"Cities Nodes: {self.cities_nodes}"
-

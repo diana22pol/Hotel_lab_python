@@ -1,8 +1,7 @@
-from abc import ABC, abstractmethod
-
 """
 Parent abstract class Hotel
 """
+from abc import ABC, abstractmethod
 
 
 class Hotel(ABC):
@@ -55,14 +54,13 @@ class Hotel(ABC):
         return self.total_rooms - self.available_rooms
 
     @abstractmethod
-    def get_Location(self):
+    def get_location(self):
         """
         Abstract method to get the location of the hotel.
 
         This method should be implemented by subclasses to
         provide the specific location information of the hotel.
         """
-        pass
 
     @staticmethod
     def get_instance():
