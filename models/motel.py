@@ -30,16 +30,8 @@ class Motel(Hotel):
         self.track_number_nearby = track_number_nearby
         self.track_kilometers = track_kilometers
         self.cities_nodes = cities_nodes
-<<<<<<< HEAD
         self.working_days = {"Mo", "We", "Th"}
 
-=======
-<<<<<<< HEAD
-        self.working_days = {"Mo", "We", "Th"}
-
-=======
->>>>>>> main
->>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
 
     def get_location(self):
         """
@@ -63,14 +55,5 @@ class Motel(Hotel):
                f"Available Rooms: {self.available_rooms}, Rating: {self.rating}, " \
                f"Track Number Nearby: {self.track_number_nearby}, " \
                f"Track Kilometers: {self.track_kilometers}, " \
-<<<<<<< HEAD
                f"Cities Nodes: {self.cities_nodes} – " \
                f"Cities Nodes: {self.working_days}"
-=======
-<<<<<<< HEAD
-               f"Cities Nodes: {self.cities_nodes} – " \
-               f"Cities Nodes: {self.working_days}"
-=======
-               f"Cities Nodes: {self.cities_nodes}"
->>>>>>> main
->>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0

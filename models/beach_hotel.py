@@ -23,19 +23,10 @@ class BeachHotel(Hotel):
         """
         super().__init__(name, total_rooms, available_rooms, rating)
         self.beach_front = beach_front
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
         self.working_days = {"We", "Tu", "Su"}
 
     def __iter__(self):
         return iter(self.working_days)
-<<<<<<< HEAD
-=======
-=======
->>>>>>> main
->>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
 
     def get_location(self):
         """

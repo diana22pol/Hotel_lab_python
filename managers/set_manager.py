@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-"""
-Importing of classes for set manager
-"""
-=======
 """Importing of classes for set manager"""
->>>>>>> main
 # pylint: disable = import-error
 from models.beach_hotel import BeachHotel
 from models.motel import Motel
@@ -14,23 +8,6 @@ from managers.hotel_manager import HotelManager
 
 
 class SetManager:
-<<<<<<< HEAD
-    def __init__(self, hotel_manager):
-        self.hotels = hotel_manager
-        self.index = 0
-        self.set_data = []
-        for plate in self.hotels:
-            for working_day in plate:
-                self.set_data.append(working_day)
-
-    def __iter__(self):
-        return self
-
-    def __getitem__(self, index):
-        return self.set_data[index]
-
-    def __next__(self):
-=======
     """
     Class set manager
     """
@@ -81,7 +58,6 @@ class SetManager:
         StopIteration: If there are no more items
         to iterate over.
         """
->>>>>>> main
         if self.index >= len(self):
             raise StopIteration
         result = self.set_data[self.index]
@@ -89,15 +65,12 @@ class SetManager:
         return result
 
     def __len__(self):
-<<<<<<< HEAD
-=======
         """
         Returns the length of the set_data attribute.
 
         Returns:
         int: The length of the set_data attribute.
         """
->>>>>>> main
         return len(self.set_data)
 
 
