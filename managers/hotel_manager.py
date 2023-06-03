@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 """
 Importing of classes for manager
 """
 # pylint: disable = import-error
+=======
+"""Importing of classes for manager"""
+# pylint: disable = import-error
+import re
+import datetime
+>>>>>>> main
 from models.beach_hotel import BeachHotel
 from models.motel import Motel
 from models.mountain_hotel import MountainHotel
 from models.resort_hotel import ResortHotel
+<<<<<<< HEAD
 import re
 import datetime
+=======
+>>>>>>> main
 
 
 class HotelManager:
@@ -16,9 +26,32 @@ class HotelManager:
     """
     hotels = []
 
+<<<<<<< HEAD
     def log_calls(filename):
         def decorator(func):
             def wrapper(*args, **kwargs):
+=======
+    # pylint: disable = no-self-argument
+    def log_calls(filename):
+        """
+            Decorator that logs the calls of a method to a specified file.
+
+            Args:
+            filename (str): The name of the file to write the logs to.
+
+            Returns:
+            The decorator function.
+            """
+
+        def decorator(func):
+            def wrapper(*args, **kwargs):
+                """
+                Wrapper function that logs the method call and executes the original method.
+
+                Returns:
+                The result of the original method.
+                """
+>>>>>>> main
                 with open(filename, 'a') as f:
                     f.write(f"{func.__name__} called at {datetime.datetime.now()}\n")
                 return func(*args, **kwargs)
@@ -27,8 +60,33 @@ class HotelManager:
 
         return decorator
 
+<<<<<<< HEAD
     def enforce_snake_case(func):
         def wrapper(*args, **kwargs):
+=======
+    # pylint: disable = no-self-argument
+    def enforce_snake_case(func):
+        """
+        Decorator that enforces snake_case method names.
+
+        Args:
+        func: The function or method to decorate.
+
+        Returns:
+        The wrapper function.
+        """
+
+        def wrapper(*args, **kwargs):
+            """
+            Wrapper function that checks if the method name is in snake_case and executes the original method.
+
+            Returns:
+            The result of the original method.
+
+            Raises:
+            Exception: If the method name is not in snake_case.
+            """
+>>>>>>> main
             if not re.match(r'^[a-z]+(_[a-z]+)*$', func.__name__):
                 raise Exception(f"Method name '{func.__name__}' is not written in snake_case")
             return func(*args, **kwargs)
