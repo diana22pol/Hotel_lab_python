@@ -13,7 +13,8 @@ class ResortHotel(Hotel):
     # pylint: disable = too-many-arguments
     def __init__(self, name, total_rooms,
                  available_rooms, rating,
-                 child_pools, adult_pools, restaurants_number):
+                 child_pools, adult_pools,
+                 restaurants_number):
         """
         Initializes a ResortHotel object.
 
@@ -30,6 +31,10 @@ class ResortHotel(Hotel):
         self.child_pools = child_pools
         self.adult_pools = adult_pools
         self.restaurants_number = restaurants_number
+        self.working_days = {"Mo", "Tu", "Fr"}
+
+    def __iter__(self):
+        return iter(self.working_days)
 
     def get_location(self):
         """

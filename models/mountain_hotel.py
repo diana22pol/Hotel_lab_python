@@ -27,6 +27,7 @@ class MountainHotel(Hotel):
         """
         super().__init__(name, total_rooms, available_rooms, rating)
         self.ski_lodge = ski_lodge
+        self.working_days = {"St", "Tu", "Fr"}
 
     def get_location(self):
         """

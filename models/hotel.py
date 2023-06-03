@@ -26,6 +26,10 @@ class Hotel(ABC):
         self.total_rooms = total_rooms
         self.available_rooms = available_rooms
         self.rating = rating
+        self.working_days = set()
+
+    def __iter__(self):
+        return iter(self.working_days)
 
     def book_room(self):
         """
