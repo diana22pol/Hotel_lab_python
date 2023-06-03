@@ -1,11 +1,23 @@
+<<<<<<< HEAD
+"""
+Importing of classes for manager
+"""
+# pylint: disable = import-error
+=======
 """Importing of classes for manager"""
 # pylint: disable = import-error
 import re
 import datetime
+>>>>>>> main
 from models.beach_hotel import BeachHotel
 from models.motel import Motel
 from models.mountain_hotel import MountainHotel
 from models.resort_hotel import ResortHotel
+<<<<<<< HEAD
+import re
+import datetime
+=======
+>>>>>>> main
 
 
 class HotelManager:
@@ -14,6 +26,11 @@ class HotelManager:
     """
     hotels = []
 
+<<<<<<< HEAD
+    def log_calls(filename):
+        def decorator(func):
+            def wrapper(*args, **kwargs):
+=======
     # pylint: disable = no-self-argument
     def log_calls(filename):
         """
@@ -34,6 +51,7 @@ class HotelManager:
                 Returns:
                 The result of the original method.
                 """
+>>>>>>> main
                 with open(filename, 'a') as f:
                     f.write(f"{func.__name__} called at {datetime.datetime.now()}\n")
                 return func(*args, **kwargs)
@@ -42,6 +60,10 @@ class HotelManager:
 
         return decorator
 
+<<<<<<< HEAD
+    def enforce_snake_case(func):
+        def wrapper(*args, **kwargs):
+=======
     # pylint: disable = no-self-argument
     def enforce_snake_case(func):
         """
@@ -64,6 +86,7 @@ class HotelManager:
             Raises:
             Exception: If the method name is not in snake_case.
             """
+>>>>>>> main
             if not re.match(r'^[a-z]+(_[a-z]+)*$', func.__name__):
                 raise Exception(f"Method name '{func.__name__}' is not written in snake_case")
             return func(*args, **kwargs)
@@ -72,6 +95,11 @@ class HotelManager:
 
     @enforce_snake_case
     @log_calls("./log.txt")
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> main
+>>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
     def add_hotel(self, hotel):
         """
         Add a hotel to the hotel list.
@@ -81,8 +109,16 @@ class HotelManager:
         """
         self.hotels.append(hotel)
 
+<<<<<<< HEAD
     @enforce_snake_case
     @log_calls("./log.txt")
+=======
+<<<<<<< HEAD
+    @enforce_snake_case
+    @log_calls("./log.txt")
+=======
+>>>>>>> main
+>>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
     def find_hotels_with_total_rooms_greater_than(self, total_rooms):
         """
         Find hotels with a total number of rooms greater than the specified value.
@@ -96,8 +132,16 @@ class HotelManager:
         """
         return [hotel.name for hotel in self.hotels if hotel.total_rooms > total_rooms]
 
+<<<<<<< HEAD
     @enforce_snake_case
     @log_calls("./log.txt")
+=======
+<<<<<<< HEAD
+    @enforce_snake_case
+    @log_calls("./log.txt")
+=======
+>>>>>>> main
+>>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
     def find_hotels_with_rating_greater_than(self, rating):
         """
         Find hotels with a rating greater than the specified value.
@@ -110,6 +154,10 @@ class HotelManager:
         """
         return [hotel.name for hotel in self.hotels if hotel.rating > rating]
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
     def __len__(self):
         return len(self.hotels)
 
@@ -259,3 +307,35 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
+=======
+=======
+    @staticmethod
+    def main():
+        """
+        The main method of the HotelManager class.
+        Creates instances of different types of hotels, adds them to the hotel manager,
+        and performs some operations on the hotel list.
+        """
+        manager = HotelManager()
+        manager.add_hotel(Motel("Highway Motel", 30, 25, 3, "M4", "280 km", "Kyiv-Lviv"))
+        manager.add_hotel(Motel("Highway Motel", 50, 25, 3, "M4", "280 km", "Kyiv-Lviv"))
+        manager.add_hotel(ResortHotel("Beach Resort", 300, 150, 4, 2, 1, 7))
+        manager.add_hotel(ResortHotel("Grand Resort", 500, 200, 5, 3, 2, 10))
+        manager.add_hotel(BeachHotel("Marriott", 150, 62, 4, True))
+        manager.add_hotel(BeachHotel("Hilton", 80, 22, 3, False))
+        manager.add_hotel(MountainHotel("Winter holidays", 488, 70, 5, True))
+        manager.add_hotel(MountainHotel("Ice Crystal Ski Resort", 656, 14, 5, True))
+
+        for hotel in manager.hotels:
+            print(str(hotel))
+
+        print("\nHotels with total rooms greater than 200:")
+        print(manager.find_hotels_with_total_rooms_greater_than(200))
+        print("\nHotels with rating greater than 4:")
+        print(manager.find_hotels_with_rating_greater_than(4))
+
+
+HotelManager.main()
+>>>>>>> main
+>>>>>>> 20543cbd6de3b76a258f7fd62999fe322c2bc7e0
