@@ -3,6 +3,9 @@ Parent abstract class Hotel
 """
 from abc import ABC, abstractmethod
 
+from tools.exeptions import TotalRoomsError
+from tools.logged import logged
+
 
 class Hotel(ABC):
     """
@@ -11,6 +14,7 @@ class Hotel(ABC):
     """
     __instance = None
 
+    @logged(TotalRoomsError, mode="file")
     def __init__(self, name="", total_rooms=None, available_rooms=None, rating=None):
         """
         Initializes a Hotel object.
@@ -23,7 +27,10 @@ class Hotel(ABC):
         """
 
         self.name = name
-        self.total_rooms = total_rooms
+        if isinstance(total_rooms, int) and total_rooms > 0:
+            self.total_rooms = total_rooms
+        else:
+            raise TotalRoomsError(total_rooms)
         self.available_rooms = available_rooms
         self.rating = rating
         self.working_days = set()
