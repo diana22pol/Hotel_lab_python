@@ -7,6 +7,9 @@ from models.motel import Motel
 from models.mountain_hotel import MountainHotel
 from models.resort_hotel import ResortHotel
 
+from tools.exeptions import RatingError
+from tools.logged import logged
+
 
 class HotelManager:
     """
@@ -70,6 +73,7 @@ class HotelManager:
 
         return wrapper
 
+
     @enforce_snake_case
     @log_calls("./log.txt")
     def add_hotel(self, hotel):
@@ -98,6 +102,7 @@ class HotelManager:
 
     @enforce_snake_case
     @log_calls("./log.txt")
+    @logged(RatingError, mode="file")
     def find_hotels_with_rating_greater_than(self, rating):
         """
         Find hotels with a rating greater than the specified value.
@@ -108,7 +113,10 @@ class HotelManager:
         Returns:
             A list of hotel names that have a rating greater than the specified value.
         """
-        return [hotel.name for hotel in self.hotels if hotel.rating > rating]
+        if 0 <= rating <= 5:
+            return [hotel.name for hotel in self.hotels if hotel.rating > rating]
+        else:
+            raise RatingError(rating)
 
     def __len__(self):
         return len(self.hotels)
@@ -194,10 +202,11 @@ class HotelManager:
         any_result = any(condition(hotel) for hotel in self.hotels)
         return {"all": all_result, "any": any_result}
 
-    @enforce_snake_case
+    # @enforce_snake_case
     def MyMethod(self):
         print("MyMethod called")
 
+    @enforce_snake_case
     @log_calls("./log.txt")
     def my_method(self):
         print("my_method called")
@@ -211,13 +220,14 @@ def main():
     """
     manager = HotelManager()
     manager.add_hotel(Motel("Highway Motel", 30, 25, 3, "M4", "280 km", "Kyiv-Lviv"))
-    manager.add_hotel(Motel("Highway Motel", 50, 25, 3, "M4", "280 km", "Kyiv-Lviv"))
+    manager.add_hotel(Motel("Highway Motel", 50, 25, 8, "M4", "280 km", "Kyiv-Lviv"))
     manager.add_hotel(ResortHotel("Beach Resort", 300, 150, 4, 2, 1, 7))
     manager.add_hotel(ResortHotel("Grand Resort", 500, 200, 5, 3, 2, 10))
     manager.add_hotel(BeachHotel("Marriott", 150, 62, 4, True))
     manager.add_hotel(BeachHotel("Hilton", 80, 22, 3, False))
     manager.add_hotel(MountainHotel("Winter holidays", 488, 70, 5, True))
     manager.add_hotel(MountainHotel("Ice Crystal Ski Resort", 656, 14, 5, True))
+    manager.add_hotel(MountainHotel("Ice Crystal Ski Resort", -60, 14, 5, True))
 
     for hotel in manager.hotels:
         print(str(hotel))
@@ -255,6 +265,8 @@ def main():
     manager = HotelManager()
     manager.my_method()
     manager.MyMethod()
+
+    print(manager.find_hotels_with_rating_greater_than(6))
 
 
 if __name__ == "__main__":
